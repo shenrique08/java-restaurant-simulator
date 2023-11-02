@@ -25,6 +25,26 @@ public abstract class Funcionario {
         }
     }
 
+    public Funcionario(String nome, String cpf) {
+        this.nome = nome;
+
+        if(validaCPF(cpf)) {
+            this.cpf = cpf;
+        } else {
+            System.out.println("CPF inválido!");
+            this.cpf = "";
+        }
+    }
+
+    public Funcionario() {
+        this.nome = "";
+        this.cpf = "";
+        this.rg = "";
+        this.estadoCivil = "";
+        this.endereco = "";
+        this.carteiraDeTrabalho = "";
+    }
+
     public boolean validaCPF(String cpf) {
         // Remove pontos e traços do CPF
         cpf = cpf.replaceAll("[^0-9]", "");

@@ -9,6 +9,7 @@ public class Pedido {
     private double valorTotal;
     private String formaPagamento;
     private Garcom garcom;
+    private Cozinheiro cozinheiro;
 
     public Pedido(Item[] itens, int[] quantidades, Date dataPedido, Date horaRegistro, Date horaPagamento, double valorTotal, String formaPagamento, Garcom garcom) {
         this.itens = itens;
@@ -19,6 +20,13 @@ public class Pedido {
         this.valorTotal = valorTotal;
         this.formaPagamento = formaPagamento;
         this.garcom = garcom;
+    }
+
+    public Pedido(Cozinheiro cozinheiro, Garcom garcom, Date dataPedido, Date horaRegistro) {
+        this.cozinheiro = cozinheiro;
+        this.garcom = garcom;
+        this.dataPedido = dataPedido;
+        this.horaRegistro = horaRegistro;
     }
 
     public double calcValorTotal() {
