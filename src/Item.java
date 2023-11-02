@@ -1,38 +1,38 @@
-public class Item {
-    private String nomeComercial;
-    private String codigo;
-    private double precoUnitario;
-    private double precoItem;
+public abstract class Item {
+    protected String nomeComercial;
+    protected String codigo;
+    protected double precoUnitario;
+    protected double precoItem;
 
-    public String getNomeComercial() {
+    protected String getNomeComercial() {
         return nomeComercial;
     }
 
-    public void setNomeComercial(String nomeComercial) {
+    protected void setNomeComercial(String nomeComercial) {
         this.nomeComercial = nomeComercial;
     }
 
-    public String getCodigo() {
+    protected String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    protected void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public double getPrecoUnitario() {
+    protected double getPrecoUnitario() {
         return precoUnitario;
     }
 
-    public void setPrecoUnitario(double precoUnitario) {
+    protected void setPrecoUnitario(double precoUnitario) {
         this.precoUnitario = precoUnitario;
     }
 
-    public double getPrecoItem() {
+    protected double getPrecoItem() {
         return precoItem;
     }
 
-    public void setPrecoItem(double precoItem) {
+    protected void setPrecoItem(double precoItem) {
         this.precoItem = precoItem;
     }
 }

@@ -1,15 +1,27 @@
 import java.util.Date;
 
 public class Garcom extends Funcionario {
-    private double salarioBase;
+    private double salarioFixo;
     private String diaFolga;
     private int numPedidos;
     private int limitePedidos = 25; // para ganhar a gratificação
+    private double salarioBonus = 0;
 
-    public Garcom(double salarioBase, String diaFolga, String nome, String cpf, String rg, String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) {
+    public Garcom(double salarioFixo, String diaFolga, String nome, String cpf, String rg, String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) {
         super(nome, cpf, rg, estadoCivil, endereco, dataAdmissao, carteiraDeTrabalho);
-        this.salarioBase = salarioBase;
+        this.salarioFixo = salarioFixo;
         this.diaFolga = diaFolga;
+    }
+
+    public double calcularSalario() {
+        double salario = 0;
+
+        if (numPedidos > limitePedidos) {
+            salarioBonus = 0.1 * salarioFixo;
+            salario += salarioBonus;
+        }
+
+        return salario;
     }
 
     public void verificaGratificacao() {
@@ -22,12 +34,12 @@ public class Garcom extends Funcionario {
 
     }
 
-    public double getSalarioBase() {
-        return salarioBase;
+    public double getSalarioFixo() {
+        return salarioFixo;
     }
 
-    public void setSalarioBase(double salarioBase) {
-        this.salarioBase = salarioBase;
+    public void setSalarioFixo(double salarioFixo) {
+        this.salarioFixo = salarioFixo;
     }
 
     public String getDiaFolga() {
