@@ -4,7 +4,7 @@ public class Garcom extends Funcionario {
     private double salarioFixo;
     private String diaFolga;
     private int numPedidos;
-    private int limitePedidos = 25; // para ganhar a gratificação
+    private static final int limitePedidos = 25; // para ganhar a gratificação
     private double salarioBonus = 0;
 
     public Garcom(double salarioFixo, String diaFolga, String nome, String cpf, String rg, String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) {
@@ -12,6 +12,7 @@ public class Garcom extends Funcionario {
         this.salarioFixo = salarioFixo;
         this.diaFolga = diaFolga;
     }
+
 
     public double calcularSalario() {
         double salario = 0;

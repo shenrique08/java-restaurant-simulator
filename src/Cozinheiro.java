@@ -13,7 +13,7 @@ public class Cozinheiro extends Funcionario{
         this.pratos = pratos;
     }
 
-    public double calcSalario() {
+    public double calcularSalario() {
 
         for(Item i: pratos) {
             salario += i.getPrecoUnitario();

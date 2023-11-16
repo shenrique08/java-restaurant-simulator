@@ -1,17 +1,17 @@
 public class Bebidas extends Item {
-    private int tamanho;
+    private double tamanho;
     private String embalagem;
 
-    public Bebidas(int tamanho, String embalagem) {
+    public Bebidas(double tamanho, String embalagem) {
         this.tamanho = tamanho;
         this.embalagem = embalagem;
     }
 
-    public int getTamanho() {
+    public double getTamanho() {
         return tamanho;
     }
 
-    public void setTamanho(int tamanho) {
+    public void setTamanho(double tamanho) {
         this.tamanho = tamanho;
     }
 
