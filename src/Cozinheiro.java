@@ -27,7 +27,10 @@ public class Cozinheiro extends Funcionario{
         return valorPratoPrincipal;
     }
 
-    public static void setValorPagoPratoPrincipal(double valor) {
+    public static void setValorPagoPratoPrincipal(double valor) throws IllegalArgumentException {
+        if (valor <= 0) {
+            throw new IllegalArgumentException();
+        }
         valorPratoPrincipal = valor;
     }
 
@@ -35,7 +38,10 @@ public class Cozinheiro extends Funcionario{
         return valorSobremesa;
     }
 
-    public static void setValorPagoSobremesa(double valor) {
+    public static void setValorPagoSobremesa(double valor) throws IllegalArgumentException {
+        if (valor <= 0) {
+            throw new IllegalArgumentException();
+        }
         valorSobremesa = valor;
     }
 

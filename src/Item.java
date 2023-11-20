@@ -24,7 +24,10 @@ public abstract class Item {
         return precoUnitario;
     }
 
-    protected void setPrecoUnitario(double precoUnitario) {
+    protected void setPrecoUnitario(double precoUnitario) throws IllegalArgumentException {
+        if (precoUnitario <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.precoUnitario = precoUnitario;
     }
 
@@ -32,7 +35,10 @@ public abstract class Item {
         return precoItem;
     }
 
-    protected void setPrecoItem(double precoItem) {
+    protected void setPrecoItem(double precoItem) throws IllegalArgumentException {
+        if (precoItem <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.precoItem = precoItem;
     }
 }

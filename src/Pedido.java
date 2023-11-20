@@ -11,7 +11,11 @@ public class Pedido {
     private Garcom garcom;
     private Cozinheiro cozinheiro;
 
-    public Pedido(Item[] itens, int[] quantidades, Date dataPedido, Date horaRegistro, Date horaPagamento, double valorTotal, String formaPagamento, Garcom garcom) {
+    public Pedido(Item[] itens, int[] quantidades, Date dataPedido, Date horaRegistro,
+                  Date horaPagamento, double valorTotal, String formaPagamento, Garcom garcom) throws IllegalArgumentException {
+        if (valorTotal <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.itens = itens;
         this.quantidades = quantidades;
         this.dataPedido = dataPedido;
@@ -81,7 +85,10 @@ public class Pedido {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(double valorTotal) throws IllegalArgumentException {
+        if (valorTotal <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.valorTotal = valorTotal;
     }
 

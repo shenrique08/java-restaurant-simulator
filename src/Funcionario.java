@@ -11,7 +11,8 @@ public abstract class Funcionario {
 
     public abstract double calcularSalario();
 
-    public Funcionario(String nome, String cpf, String rg, String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) {
+    public Funcionario(String nome, String cpf, String rg, String estadoCivil, String endereco,
+                       Date dataAdmissao, String carteiraDeTrabalho) {
         this.nome = nome;
         this.rg = rg;
         this.estadoCivil = estadoCivil;

@@ -3,7 +3,10 @@ public abstract class Prato extends Item {
     protected String descricao;
     protected double tempoPreparo;
 
-    public Prato(String[] ingredientes, String descricao, double tempoPreparo) {
+    public Prato(String[] ingredientes, String descricao, double tempoPreparo) throws IllegalArgumentException {
+        if (tempoPreparo <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.ingredientes = ingredientes;
         this.descricao = descricao;
         this.tempoPreparo = tempoPreparo;
@@ -29,7 +32,10 @@ public abstract class Prato extends Item {
         return tempoPreparo;
     }
 
-    protected void setTempoPreparo(double tempoPreparo) {
+    protected void setTempoPreparo(double tempoPreparo) throws IllegalArgumentException {
+        if (tempoPreparo <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.tempoPreparo = tempoPreparo;
     }
 

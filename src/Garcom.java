@@ -7,8 +7,12 @@ public class Garcom extends Funcionario {
     private static final int limitePedidos = 25; // para ganhar a gratificação
     private double salarioBonus = 0;
 
-    public Garcom(double salarioFixo, String diaFolga, String nome, String cpf, String rg, String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) {
+    public Garcom(double salarioFixo, String diaFolga, String nome, String cpf, String rg,
+                  String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) throws IllegalArgumentException {
         super(nome, cpf, rg, estadoCivil, endereco, dataAdmissao, carteiraDeTrabalho);
+        if (salarioFixo <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.salarioFixo = salarioFixo;
         this.diaFolga = diaFolga;
     }
@@ -39,7 +43,10 @@ public class Garcom extends Funcionario {
         return salarioFixo;
     }
 
-    public void setSalarioFixo(double salarioFixo) {
+    public void setSalarioFixo(double salarioFixo) throws IllegalArgumentException {
+        if (salarioFixo <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.salarioFixo = salarioFixo;
     }
 
