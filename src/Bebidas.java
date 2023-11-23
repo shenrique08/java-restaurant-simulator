@@ -1,13 +1,15 @@
 public class Bebidas extends Item {
     private double tamanho;
     private String embalagem;
+    private String nome;
 
-    public Bebidas(double tamanho, String embalagem) throws IllegalArgumentException {
+    public Bebidas(String n, double tamanho, String embalagem) throws IllegalArgumentException {
         if (tamanho <= 0) {
             throw new IllegalArgumentException();
         }
         this.tamanho = tamanho;
         this.embalagem = embalagem;
+        this.nome = n;
     }
 
     public double getTamanho() {
@@ -27,5 +29,13 @@ public class Bebidas extends Item {
 
     public void setEmbalagem(String embalagem) {
         this.embalagem = embalagem;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
