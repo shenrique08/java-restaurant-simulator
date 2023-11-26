@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Pedido {
-    private Item[] itens;
-    private int[] quantidades;
+    private List<Item> itens;
+    private List<Integer> quantidades;
     private Date dataPedido;
     private Date horaRegistro;
     private Date horaPagamento;
@@ -11,7 +13,7 @@ public class Pedido {
     private Garcom garcom;
     private Cozinheiro cozinheiro;
 
-    public Pedido(Item[] itens, int[] quantidades, Date dataPedido, Date horaRegistro,
+    public Pedido(List<Item> itens, List<Integer> quantidades, Date dataPedido, Date horaRegistro,
                   Date horaPagamento, double valorTotal, String formaPagamento, Garcom garcom) throws IllegalArgumentException {
         if (valorTotal <= 0) {
             throw new IllegalArgumentException();
@@ -41,19 +43,19 @@ public class Pedido {
         return valorTotal;
     }
 
-    public Item[] getItens() {
+    public List<Item> getItens() {
         return itens;
     }
 
-    public void setItens(Item[] itens) {
+    public void setItens(List<Item> itens) {
         this.itens = itens;
     }
 
-    public int[] getQuantidades() {
+    public List<Integer> getQuantidades() {
         return quantidades;
     }
 
-    public void setQuantidades(int[] quantidades) {
+    public void setQuantidades(List<Integer> quantidades) {
         this.quantidades = quantidades;
     }
 

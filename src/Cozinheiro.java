@@ -1,14 +1,16 @@
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cozinheiro extends Funcionario{
-    private Item[] pratos;
+    private List<? extends Item> pratos;
     private double salario;
 
     // Atributos estáticos para o valor pago ao cozinheiro por prato principal e sobremesa
     private static double valorPratoPrincipal;
     private static double valorSobremesa;
 
-    public Cozinheiro(Item[] pratos, String nome, String cpf, String rg, String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) {
+    public Cozinheiro(List<? extends Item> pratos, String nome, String cpf, String rg, String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) {
         super(nome, cpf, rg, estadoCivil, endereco, dataAdmissao, carteiraDeTrabalho);
         this.pratos = pratos;
     }
@@ -45,11 +47,11 @@ public class Cozinheiro extends Funcionario{
         valorSobremesa = valor;
     }
 
-    public Item[] getPratos() {
+    public List<? extends Item> getPratos() {
         return pratos;
     }
 
-    public void setPratos(Item[] pratos) {
+    public void setPratos(List<Item> pratos) {
         this.pratos = pratos;
     }
 }

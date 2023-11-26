@@ -1,28 +1,34 @@
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
         // Criando os garçons
-        Garcom[] garcons = new Garcom[3];
+        List<Garcom> garcons = new ArrayList<>();
 
         try {
-            garcons[0] = new Garcom(2000.0, "Segunda", "Joao", "139710616-64", "123456", "Solteiro", "Rua 01", new Date(), "CT123");
-            garcons[1] = new Garcom(1800.0, "Terça", "Maria", "139710616-64", "654321", "Casado", "Rua 02", new Date(), "CT456");
-            garcons[2] = new Garcom(2200.0, "Quarta", "Pedro", "139710616-64", "789012", "Solteiro", "Rua 03", new Date(), "CT789");
+            garcons.add(new Garcom(2000.0, "Segunda", "Joao", "139710616-64", "123456", "Solteiro", "Rua 01", new Date(), "CT123"));
+            garcons.add(new Garcom(1800.0, "Terça", "Maria", "139710616-64", "654321", "Casado", "Rua 02", new Date(), "CT456"));
+            garcons.add(new Garcom(2200.0, "Quarta", "Pedro", "139710616-64", "789012", "Solteiro", "Rua 03", new Date(), "CT789"));
         } catch (IllegalArgumentException e) {
             System.out.println("Erro ao criar objeto Garcom: Salário fixo deve ser maior que zero.");
             return;
         }
 
+        /* código antigo (vetor estático)
         // Criando instâncias de bebidas
         Bebidas[] bebidas = {
                 new Bebidas("Coca-Cola", 500.0, "Lata"),
                 new Bebidas("Cerveja", 750.0, "Garrafa"),
                 new Bebidas("Suco",300.0, "Lata")
         };
+        */
+
+        List<Bebidas> bebidas = new ArrayList<>();
+        bebidas.add(new Bebidas("Coca-cola", 500.0, "Lata"));
+        bebidas.add(new Bebidas("Cerveja", 750.0, "Garrafa"));
+        bebidas.add(new Bebidas("Suco", 300.0, "Lata"));
 
         // Atribuindo valores às bebidas
         for (Bebidas bebida : bebidas) {
@@ -33,11 +39,19 @@ public class Main {
         }
 
         // Criando instâncias de pratos principais
+
+        /* código antigo (vetor estático)
         PratoPrincipal[] pratosPrincipais = {
                 new PratoPrincipal(new String[]{"Ingrediente1", "Ingrediente2"}, "Feijoada", 30.0),
                 new PratoPrincipal(new String[]{"Ingrediente3", "Ingrediente4"}, "Arroz Carreteiro", 25.0),
                 new PratoPrincipal(new String[]{"Ingrediente5", "Ingrediente6"}, "Galinhada", 35.0)
         };
+        */
+
+        List<PratoPrincipal> pratosPrincipais = new ArrayList<>();
+        pratosPrincipais.add(new PratoPrincipal(Arrays.asList("Ingrediente1", "Ingrediente2"), "Feijoada", 30.0));
+        pratosPrincipais.add(new PratoPrincipal(Arrays.asList("Ingrediente3", "Ingrediente4"), "Arroz Carreteiro", 25.0));
+        pratosPrincipais.add(new PratoPrincipal(Arrays.asList("Ingrediente5", "Ingrediente6"), "Galinhada", 35.0));
 
         // Atribuindo valores aos pratos principais
         for (PratoPrincipal pratoPrincipal : pratosPrincipais) {
@@ -48,11 +62,17 @@ public class Main {
         }
 
         // Criando instâncias de sobremesas
+        /* código antigo (vetor estático)
         Sobremesa[] sobremesas = {
                 new Sobremesa(new String[]{"Ingrediente7", "Ingrediente8"}, "Bolo", 15.0, 200.0),
                 new Sobremesa(new String[]{"Ingrediente9", "Ingrediente10"}, "Pudim", 12.0, 150.0),
                 new Sobremesa(new String[]{"Ingrediente11", "Ingrediente12"}, "Mousse", 18.0, 250.0)
         };
+        */
+        List<Sobremesa> sobremesas = new ArrayList<>();
+        sobremesas.add(new Sobremesa(Arrays.asList("Ingrediente7", "Ingrediente8"), "Bolo", 15.0, 200.0));
+        sobremesas.add(new Sobremesa(Arrays.asList("Ingrediente7", "Ingrediente8"), "Pudim", 12.0, 150.0));
+        sobremesas.add(new Sobremesa(Arrays.asList("Ingrediente7", "Ingrediente8"), "Mousse", 18.0, 250.0));
 
         // Atribuindo valores às sobremesas
         for (Sobremesa sobremesa : sobremesas) {
@@ -63,9 +83,10 @@ public class Main {
         }
 
         // Criando os cozinheiros
-        Cozinheiro cozinheiro1 = new Cozinheiro(bebidas, "José", "139710616-64", "123456", "Solteiro", "Rua 01", new Date(), "Carteira1");
-        Cozinheiro cozinheiro2 = new Cozinheiro(pratosPrincipais, "Augusto", "139710616-64", "654321", "Solteiro", "Rua 02", new Date(), "Carteira2");
-        Cozinheiro cozinheiro3 = new Cozinheiro(sobremesas, "Rodrigo", "139710616-64", "789012", "Solteiro", "Rua 03", new Date(), "Carteira3");
+        Cozinheiro cozinheiro1 = new Cozinheiro(new ArrayList<>(bebidas), "José", "139710616-64", "123456", "Solteiro", "Rua 01", new Date(), "Carteira1");
+        Cozinheiro cozinheiro2 = new Cozinheiro(new ArrayList<>(pratosPrincipais), "Augusto", "139710616-64", "654321", "Solteiro", "Rua 02", new Date(), "Carteira2");
+        Cozinheiro cozinheiro3 = new Cozinheiro(new ArrayList<>(sobremesas), "Rodrigo", "139710616-64", "789012", "Solteiro", "Rua 03", new Date(), "Carteira3");
+
 
         // Adicionando valores aos pratos (exemplo)
         for (Item prato : pratosPrincipais) {

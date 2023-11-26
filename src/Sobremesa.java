@@ -1,7 +1,8 @@
+import java.util.List;
 public class Sobremesa extends Prato {
     private double calorias;
 
-    public Sobremesa(String[] ingredientes, String descricao, double tempoPreparo, double calorias) throws IllegalArgumentException {
+    public Sobremesa(List<String> ingredientes, String descricao, double tempoPreparo, double calorias) throws IllegalArgumentException {
         super(ingredientes, descricao, tempoPreparo);
         if (calorias <= 0) {
             throw new IllegalArgumentException();

@@ -1,9 +1,11 @@
+import java.util.List;
+
 public abstract class Prato extends Item {
-    protected String[] ingredientes;
+    protected List<String> ingredientes;
     protected String descricao;
     protected double tempoPreparo;
 
-    public Prato(String[] ingredientes, String descricao, double tempoPreparo) throws IllegalArgumentException {
+    public Prato(List<String> ingredientes, String descricao, double tempoPreparo) throws IllegalArgumentException {
         if (tempoPreparo <= 0) {
             throw new IllegalArgumentException();
         }
@@ -12,11 +14,11 @@ public abstract class Prato extends Item {
         this.tempoPreparo = tempoPreparo;
     }
 
-    protected String[] getIngredientes() {
+    protected List<String> getIngredientes() {
         return ingredientes;
     }
 
-    protected void setIngredientes(String[] ingredientes) {
+    protected void setIngredientes(List<String> ingredientes) {
         this.ingredientes = ingredientes;
     }
 
