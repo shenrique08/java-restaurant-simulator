@@ -16,7 +16,7 @@ public class Cozinheiro extends Funcionario{
     }
 
 
-    // Método para calcular o salário do cozinheiro
+
     public double calcularSalario() {
         double salario = 0.0;
 
