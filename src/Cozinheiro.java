@@ -15,6 +15,25 @@ public class Cozinheiro extends Funcionario{
         this.pratos = pratos;
     }
 
+
+    // Método para calcular o salário do cozinheiro
+    public double calcularSalario() {
+        double salario = 0.0;
+
+        // Iterar sobre os itens da categoria do cozinheiro (pratos principais ou sobremesas)
+        for (Item item : pratos) {
+            // Verificar o tipo de item e adicionar o valor correspondente ao salário
+            if (item instanceof PratoPrincipal) {
+                salario += valorPratoPrincipal;
+            } else if (item instanceof Sobremesa) {
+                salario += valorSobremesa;
+            }
+        }
+
+        return salario;
+    }
+
+    /*
     public double calcularSalario() {
 
         for(Item i: pratos) {
@@ -24,6 +43,8 @@ public class Cozinheiro extends Funcionario{
         return salario;
     }
 
+     */
+
     // Métodos para os valores estáticos
     public static double getValorPagoPratoPrincipal() {
         return valorPratoPrincipal;
@@ -31,7 +52,7 @@ public class Cozinheiro extends Funcionario{
 
     public static void setValorPagoPratoPrincipal(double valor) throws IllegalArgumentException {
         if (valor <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("O valor deve ser maior que 0!");
         }
         valorPratoPrincipal = valor;
     }
@@ -42,7 +63,7 @@ public class Cozinheiro extends Funcionario{
 
     public static void setValorPagoSobremesa(double valor) throws IllegalArgumentException {
         if (valor <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("O valor deve ser maior que 0!");
         }
         valorSobremesa = valor;
     }

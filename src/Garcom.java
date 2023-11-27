@@ -11,7 +11,7 @@ public class Garcom extends Funcionario {
                   String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) throws IllegalArgumentException {
         super(nome, cpf, rg, estadoCivil, endereco, dataAdmissao, carteiraDeTrabalho);
         if (salarioFixo <= 0) {
-            throw new IllegalArgumentException();
+            throw new salarioNegativoException("Erro ao criar objeto 'Garcom': O salário fixo deve ser maior que zero.");
         }
         this.salarioFixo = salarioFixo;
         this.diaFolga = diaFolga;
@@ -45,7 +45,7 @@ public class Garcom extends Funcionario {
 
     public void setSalarioFixo(double salarioFixo) throws IllegalArgumentException {
         if (salarioFixo <= 0) {
-            throw new IllegalArgumentException();
+            throw new salarioNegativoException("O salário fixo deve ser maior que zero.");
         }
         this.salarioFixo = salarioFixo;
     }

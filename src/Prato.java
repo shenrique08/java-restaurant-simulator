@@ -7,7 +7,7 @@ public abstract class Prato extends Item {
 
     public Prato(List<String> ingredientes, String descricao, double tempoPreparo) throws IllegalArgumentException {
         if (tempoPreparo <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("O tempo de preparo deve ser maior que 0!");
         }
         this.ingredientes = ingredientes;
         this.descricao = descricao;
@@ -36,7 +36,7 @@ public abstract class Prato extends Item {
 
     protected void setTempoPreparo(double tempoPreparo) throws IllegalArgumentException {
         if (tempoPreparo <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("O tempo de preparo deve ser maior que 0!");
         }
         this.tempoPreparo = tempoPreparo;
     }

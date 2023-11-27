@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,9 +34,53 @@ public class Pedido {
         this.horaRegistro = horaRegistro;
     }
 
+    public Pedido(List<Item> itens, List<Integer> quantidades, Garcom garcom) throws IllegalArgumentException {
+        if (itens.size() != quantidades.size()) {
+            throw new IllegalArgumentException("O número de itens e da quantidade devem ser iguais!");
+        }
+        this.itens = itens;
+        this.quantidades = quantidades;
+        this.dataPedido = new Date();
+        this.horaRegistro = new Date();
+        this.valorTotal = calcValorTotal();
+        this.garcom = garcom;
+    }
+
+
+    public void realizarPedido() {
+        System.out.println("\n<<<<< PEDIDO >>>>>");
+        System.out.println("Garçom: " + garcom.nome);
+        System.out.println("Itens do Pedido:");
+
+        for (int i = 0; i < itens.size(); i++) {
+            Item item = itens.get(i);
+            int quantidade = quantidades.get(i);
+
+            System.out.println("- " + quantidade + " x " + item.getNomeComercial() + " - R$" + item.getPrecoItem() * quantidade);
+        }
+
+        System.out.println("\nTotal do Pedido: R$" + valorTotal);
+        System.out.println("Preparando os itens...");
+
+
+        for (Item item : itens) {
+            System.out.println("Preparando " + item.getNomeComercial() + "...");
+        }
+
+
+        System.out.println("Efetuando pagamento...");
+        System.out.println("\nPEDIDO CONCLUÍDO!");
+    }
+
+
     public double calcValorTotal() {
-        for(Item i: itens) {
-            valorTotal += i.getPrecoItem();
+        valorTotal = 0.0;
+
+        for (int i = 0; i < itens.size(); i++) {
+            Item item = itens.get(i);
+            int quantidade = quantidades.get(i);
+
+            valorTotal += item.getPrecoItem() * quantidade;
         }
 
         return valorTotal;

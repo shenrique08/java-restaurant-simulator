@@ -5,7 +5,7 @@ public class Bebidas extends Item {
 
     public Bebidas(String n, double tamanho, String embalagem) throws IllegalArgumentException {
         if (tamanho <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("O tamanho deve ser maior que 0");
         }
         this.tamanho = tamanho;
         this.embalagem = embalagem;
@@ -18,7 +18,7 @@ public class Bebidas extends Item {
 
     public void setTamanho(double tamanho) throws IllegalArgumentException {
         if (tamanho <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("O tamanho deve ser maior que 0");
         }
         this.tamanho = tamanho;
     }
