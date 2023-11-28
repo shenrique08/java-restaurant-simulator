@@ -1,8 +1,9 @@
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Cozinheiro extends Funcionario{
+public class Cozinheiro extends Funcionario implements Serializable {
     private List<? extends Item> pratos;
     private double salario;
 

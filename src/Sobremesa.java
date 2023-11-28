@@ -1,5 +1,7 @@
 import java.util.List;
-public class Sobremesa extends Prato {
+import java.io.Serializable;
+
+public class Sobremesa extends Prato implements Serializable {
     private double calorias;
 
     public Sobremesa(List<String> ingredientes, String descricao, double tempoPreparo, double calorias) throws IllegalArgumentException {

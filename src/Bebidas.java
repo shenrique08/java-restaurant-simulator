@@ -1,4 +1,6 @@
-public class Bebidas extends Item {
+import java.io.Serializable;
+
+public class Bebidas extends Item implements Serializable {
     private double tamanho;
     private String embalagem;
     private String nome;

@@ -12,6 +12,19 @@ public class Main {
         garcons.add(new Garcom(1800.0, "Terça", "Maria", "139710616-64", "654321", "Casado", "Rua 02", new Date(), "CT456"));
         garcons.add(new Garcom(2200.0, "Quarta", "Pedro", "139710616-64", "789012", "Solteiro", "Rua 03", new Date(), "CT789"));
 
+        // Serializar os garçons
+        Persistencia.serializar("garcons.ser", garcons);
+
+        // Teste: desserializar os garçons
+        /*
+        List<Garcom> garconsDesserializados = Persistencia.desserializar("garcons.ser");
+        if (garconsDesserializados != null) {
+            for (Garcom garcom : garconsDesserializados) {
+                System.out.println(garcom);
+            }
+        }
+
+         */
 
         /* o possível erro do salário fixo já havia sido tratado na criação do objeto
         try {
@@ -41,6 +54,8 @@ public class Main {
         bebidas.add(new Bebidas("Cerveja", 750.0, "Garrafa"));
         bebidas.add(new Bebidas("Suco", 300.0, "Lata"));
 
+        Persistencia.serializar("bebidas.ser", bebidas);
+
 
         // Atribuindo valores às bebidas
         for (Bebidas bebida : bebidas) {
@@ -65,6 +80,8 @@ public class Main {
         pratosPrincipais.add(new PratoPrincipal(Arrays.asList("Ingrediente3", "Ingrediente4"), "Arroz Carreteiro", 25.0));
         pratosPrincipais.add(new PratoPrincipal(Arrays.asList("Ingrediente5", "Ingrediente6"), "Galinhada", 35.0));
 
+        Persistencia.serializar("pratosPrincipais.ser", pratosPrincipais);
+
         // Atribuindo valores aos pratos principais
         for (PratoPrincipal pratoPrincipal : pratosPrincipais) {
             pratoPrincipal.setNomeComercial("Prato Principal");
@@ -86,6 +103,8 @@ public class Main {
         sobremesas.add(new Sobremesa(Arrays.asList("Ingrediente7", "Ingrediente8"), "Pudim", 12.0, 150.0));
         sobremesas.add(new Sobremesa(Arrays.asList("Ingrediente7", "Ingrediente8"), "Mousse", 18.0, 250.0));
 
+        Persistencia.serializar("sobremesas.ser", sobremesas);
+
         // Atribuindo valores às sobremesas
         for (Sobremesa sobremesa : sobremesas) {
             sobremesa.setNomeComercial("Sobremesa");
@@ -99,6 +118,7 @@ public class Main {
         cozinheiros.add(new Cozinheiro(new ArrayList<>(pratosPrincipais), "Marcel 200 I.Q", "139710616-64", "654321", "Solteiro", "Rua 02", new Date(), "Carteira2"));
         cozinheiros.add(new Cozinheiro(new ArrayList<>(sobremesas), "Lazarento", "139710616-64", "789012", "Solteiro", "Rua 03", new Date(), "Carteira3"));
 
+        Persistencia.serializar("cozinheiros.ser", cozinheiros);
 
         // Adicionando valores aos pratos (exemplo)
         for (Item prato : pratosPrincipais) {

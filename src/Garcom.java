@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Date;
 
-public class Garcom extends Funcionario {
+public class Garcom extends Funcionario implements Serializable {
     private double salarioFixo;
     private String diaFolga;
     private int numPedidos;
@@ -57,4 +58,23 @@ public class Garcom extends Funcionario {
     public void setDiaFolga(String diaFolga) {
         this.diaFolga = diaFolga;
     }
+
+    @Override
+    public String toString() {
+        return "Garcom{" +
+                "salarioFixo=" + salarioFixo +
+                ", diaFolga='" + diaFolga + '\'' +
+                ", numPedidos=" + numPedidos +
+                ", limitePedidos=" + limitePedidos +
+                ", salarioBonus=" + salarioBonus +
+                ", nome='" + nome + '\'' +
+                ", CPF='" + cpf + '\'' +
+                ", RG='" + rg + '\'' +
+                ", estadoCivil='" + estadoCivil + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", dataAdmissao=" + dataAdmissao +
+                ", carteiraDeTrabalho='" + carteiraDeTrabalho + '\'' +
+                '}';
+    }
+
 }
