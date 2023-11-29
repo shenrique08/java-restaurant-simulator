@@ -6,6 +6,8 @@ import java.io.Serializable;
 public class Cozinheiro extends Funcionario implements Serializable {
     private List<? extends Item> pratos;
     private double salario;
+    private int numPedidosNoMes;
+    private final int limitePedidos = 1;
 
     // Atributos estáticos para o valor pago ao cozinheiro por prato principal e sobremesa
     private static double valorPratoPrincipal;
@@ -14,27 +16,27 @@ public class Cozinheiro extends Funcionario implements Serializable {
     public Cozinheiro(List<? extends Item> pratos, String nome, String cpf, String rg, String estadoCivil, String endereco, Date dataAdmissao, String carteiraDeTrabalho) {
         super(nome, cpf, rg, estadoCivil, endereco, dataAdmissao, carteiraDeTrabalho);
         this.pratos = pratos;
+        this.numPedidosNoMes = 0;
+        this.salario = 0;
     }
 
-
-
-    public double calcularSalario() {
-        double salario = 0.0;
-
-        // Iterar sobre os itens da categoria do cozinheiro (pratos principais ou sobremesas)
-        for (Item item : pratos) {
-            // Verificar o tipo de item e adicionar o valor correspondente ao salário
-            if (item instanceof PratoPrincipal) {
-                salario += valorPratoPrincipal;
-            } else if (item instanceof Sobremesa) {
-                salario += valorSobremesa;
-            }
-        }
-
+    public double getSalario() {
         return salario;
     }
 
-    /*
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public int getNumPedidosNoMes() {
+        return numPedidosNoMes;
+    }
+
+    public void setNumPedidosNoMes(int numPedidosNoMes) {
+        this.numPedidosNoMes = numPedidosNoMes;
+    }
+
+
     public double calcularSalario() {
 
         for(Item i: pratos) {
@@ -43,8 +45,6 @@ public class Cozinheiro extends Funcionario implements Serializable {
 
         return salario;
     }
-
-     */
 
     // Métodos para os valores estáticos
     public static double getValorPagoPratoPrincipal() {

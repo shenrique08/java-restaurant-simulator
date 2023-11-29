@@ -4,8 +4,8 @@ import java.util.Date;
 public class Garcom extends Funcionario implements Serializable {
     private double salarioFixo;
     private String diaFolga;
-    private int numPedidos;
-    private static final int limitePedidos = 25; // para ganhar a gratificação
+    private int numPedidosNoMes;
+    private static final int limitePedidos = 1; // para ganhar a gratificação
     private double salarioBonus = 0;
 
     public Garcom(double salarioFixo, String diaFolga, String nome, String cpf, String rg,
@@ -16,13 +16,29 @@ public class Garcom extends Funcionario implements Serializable {
         }
         this.salarioFixo = salarioFixo;
         this.diaFolga = diaFolga;
+        this.numPedidosNoMes = 0;
     }
 
+    public int getnumPedidosNoMes() {
+        return numPedidosNoMes;
+    }
+
+    public void setnumPedidosNoMes(int numPedidosNoMes) {
+        this.numPedidosNoMes = numPedidosNoMes;
+    }
+
+    public double getSalarioBonus() {
+        return salarioBonus;
+    }
+
+    public void setSalarioBonus(double salarioBonus) {
+        this.salarioBonus = salarioBonus;
+    }
 
     public double calcularSalario() {
-        double salario = 0;
+        double salario = salarioFixo;
 
-        if (numPedidos > limitePedidos) {
+        if (numPedidosNoMes > limitePedidos) {
             salarioBonus = 0.1 * salarioFixo;
             salario += salarioBonus;
         }
@@ -32,12 +48,11 @@ public class Garcom extends Funcionario implements Serializable {
 
     public void verificaGratificacao() {
 
-        if (numPedidos > limitePedidos) {
-            System.out.println("Você ganhou a gratificação!");
+        if (numPedidosNoMes > limitePedidos) {
+            System.out.printf("[%s] ganhou a gratificação!", getNome());
         } else {
-            System.out.println("Você não ganhou a gratificação!");
+            System.out.printf("[%s] não ganhou a gratificação!", getNome());
         }
-
     }
 
     public double getSalarioFixo() {
@@ -64,7 +79,7 @@ public class Garcom extends Funcionario implements Serializable {
         return "Garcom{" +
                 "salarioFixo=" + salarioFixo +
                 ", diaFolga='" + diaFolga + '\'' +
-                ", numPedidos=" + numPedidos +
+                ", numPedidosNoMes=" + numPedidosNoMes +
                 ", limitePedidos=" + limitePedidos +
                 ", salarioBonus=" + salarioBonus +
                 ", nome='" + nome + '\'' +
@@ -76,5 +91,4 @@ public class Garcom extends Funcionario implements Serializable {
                 ", carteiraDeTrabalho='" + carteiraDeTrabalho + '\'' +
                 '}';
     }
-
 }

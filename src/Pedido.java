@@ -49,7 +49,7 @@ public class Pedido {
 
     public void realizarPedido() {
         System.out.println("\n<<<<< PEDIDO >>>>>");
-        System.out.println("Garçom: " + garcom.nome);
+        System.out.println("Garçom: " + garcom.getNome());
         System.out.println("Itens do Pedido:");
 
         for (int i = 0; i < itens.size(); i++) {

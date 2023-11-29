@@ -83,4 +83,60 @@ public abstract class Funcionario {
         return cpf.charAt(9) == Character.forDigit(firstVerificationDigit, 10)
                 && cpf.charAt(10) == Character.forDigit(secondVerificationDigit, 10);
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public Date getDataAdmissao() {
+        return dataAdmissao;
+    }
+
+    public void setDataAdmissao(Date dataAdmissao) {
+        this.dataAdmissao = dataAdmissao;
+    }
+
+    public String getCarteiraDeTrabalho() {
+        return carteiraDeTrabalho;
+    }
+
+    public void setCarteiraDeTrabalho(String carteiraDeTrabalho) {
+        this.carteiraDeTrabalho = carteiraDeTrabalho;
+    }
 }

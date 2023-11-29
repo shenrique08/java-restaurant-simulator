@@ -1,4 +1,3 @@
-import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -26,29 +25,6 @@ public class Main {
 
          */
 
-        /* o possível erro do salário fixo já havia sido tratado na criação do objeto
-        try {
-            garcons.add(new Garcom(2000.0, "Segunda", "Joao", "139710616-64", "123456", "Solteiro", "Rua 01", new Date(), "CT123"));
-            garcons.add(new Garcom(1800.0, "Terça", "Maria", "139710616-64", "654321", "Casado", "Rua 02", new Date(), "CT456"));
-            garcons.add(new Garcom(2200.0, "Quarta", "Pedro", "139710616-64", "789012", "Solteiro", "Rua 03", new Date(), "CT789"));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erro ao criar objeto 'Garcom': O salário fixo deve ser maior que zero.");
-            return;
-        } */
-
-
-
-        /* código antigo (vetor estático)
-        // Criando instâncias de bebidas
-        Bebidas[] bebidas = {
-                new Bebidas("Coca-Cola", 500.0, "Lata"),
-                new Bebidas("Cerveja", 750.0, "Garrafa"),
-                new Bebidas("Suco",300.0, "Lata")
-        };
-        */
-
-
-
         List<Bebidas> bebidas = new ArrayList<>();
         bebidas.add(new Bebidas("Coca-cola", 500.0, "Lata"));
         bebidas.add(new Bebidas("Cerveja", 750.0, "Garrafa"));
@@ -65,16 +41,6 @@ public class Main {
             bebida.setPrecoItem(bebida.getPrecoUnitario() * bebida.getTamanho());
         }
 
-        // Criando instâncias de pratos principais
-
-        /* código antigo (vetor estático)
-        PratoPrincipal[] pratosPrincipais = {
-                new PratoPrincipal(new String[]{"Ingrediente1", "Ingrediente2"}, "Feijoada", 30.0),
-                new PratoPrincipal(new String[]{"Ingrediente3", "Ingrediente4"}, "Arroz Carreteiro", 25.0),
-                new PratoPrincipal(new String[]{"Ingrediente5", "Ingrediente6"}, "Galinhada", 35.0)
-        };
-        */
-
         List<PratoPrincipal> pratosPrincipais = new ArrayList<>();
         pratosPrincipais.add(new PratoPrincipal(Arrays.asList("Ingrediente1", "Ingrediente2"), "Feijoada", 30.0));
         pratosPrincipais.add(new PratoPrincipal(Arrays.asList("Ingrediente3", "Ingrediente4"), "Arroz Carreteiro", 25.0));
@@ -90,14 +56,7 @@ public class Main {
             pratoPrincipal.setPrecoItem(pratoPrincipal.getPrecoUnitario());
         }
 
-        // Criando instâncias de sobremesas
-        /* código antigo (vetor estático)
-        Sobremesa[] sobremesas = {
-                new Sobremesa(new String[]{"Ingrediente7", "Ingrediente8"}, "Bolo", 15.0, 200.0),
-                new Sobremesa(new String[]{"Ingrediente9", "Ingrediente10"}, "Pudim", 12.0, 150.0),
-                new Sobremesa(new String[]{"Ingrediente11", "Ingrediente12"}, "Mousse", 18.0, 250.0)
-        };
-        */
+
         List<Sobremesa> sobremesas = new ArrayList<>();
         sobremesas.add(new Sobremesa(Arrays.asList("Ingrediente7", "Ingrediente8"), "Bolo", 15.0, 200.0));
         sobremesas.add(new Sobremesa(Arrays.asList("Ingrediente7", "Ingrediente8"), "Pudim", 12.0, 150.0));
@@ -175,21 +134,27 @@ public class Main {
                         System.out.println(s.getDescricao());
                     }
                 }
-                // REALIZAR UM PEDIDO
                 case 2 -> {
                     Date dataPedido = new Date();
                     System.out.println("\n<<<<< REALIZAR UM PEDIDO >>>>>");
-                    System.out.println("\n<< GARÇONS DISPONÍVEIS >> ");
-                    for (int i = 0; i < garcons.size(); i++) {
-                        System.out.println("(" + (i + 1) + ") " + garcons.get(i).nome);
-                    }
-                    System.out.print("Escolha o NÚMERO associado ao nome do garçom para o atendimento: ");
-                    int garcomIndex = sc.nextInt();
-                    sc.nextLine(); // Consume the newline character
-                    if (garcomIndex < 1 || garcomIndex > garcons.size()) {
-                        System.out.println("Número de garçom inválido. Pedido cancelado.");
-                        break;
-                    }
+
+                    // Loop para escolher um garçom válido
+                    int garcomIndex;
+                    do {
+                        System.out.println("\n<< GARÇONS DISPONÍVEIS >> ");
+                        for (int i = 0; i < garcons.size(); i++) {
+                            System.out.println("(" + (i + 1) + ") " + garcons.get(i).nome);
+                        }
+
+                        System.out.print("Escolha o NÚMERO associado ao nome do garçom para o atendimento: ");
+                        garcomIndex = sc.nextInt();
+                        sc.nextLine();
+
+                        if (garcomIndex < 1 || garcomIndex > garcons.size()) {
+                            System.out.println("Garçom inválido! Tente novamente.");
+                        }
+                    } while (garcomIndex < 1 || garcomIndex > garcons.size());
+
                     Garcom garcomAtendimento = garcons.get(garcomIndex - 1);
 
                     List<Item> itensPedido = new ArrayList<>();
@@ -275,17 +240,24 @@ public class Main {
 
 
                     System.out.println("\n<< COZINHEIROS DISPONÍVEIS >> ");
-                    for (int i = 0; i < 3; i++) {
-                        System.out.println("(" + (i + 1) + ") " + "Cozinheiro " + (i + 1));
-                    }
-                    System.out.print("Escolha o número do cozinheiro para preparar o pedido: ");
-                    int cozinheiroIndex = sc.nextInt();
-                    sc.nextLine();
 
-                    if (cozinheiroIndex < 1 || cozinheiroIndex > 3) {
-                        System.out.println("Número de cozinheiro inválido. Pedido cancelado.");
-                        break;
-                    }
+                    int cozinheiroIndex;
+                    do {
+                        for (int i = 0; i < cozinheiros.size(); i++) {
+                            System.out.println("(" + (i + 1) + ") Cozinheiro: " + cozinheiros.get(i).getNome());
+                        }
+
+                        System.out.print("Escolha o número associado ao cozinheiro para preparar o pedido: ");
+                        cozinheiroIndex = sc.nextInt();
+                        sc.nextLine();
+
+                        if (cozinheiroIndex < 1 || cozinheiroIndex > cozinheiros.size()) {
+                            System.out.println("Cozinheiro inválido! Tente novamente.");
+                        }
+                    } while (cozinheiroIndex < 1 || cozinheiroIndex > cozinheiros.size());
+
+
+                    Cozinheiro cozinheiroEscolhido = cozinheiros.get(cozinheiroIndex - 1);
 
 
                     Date dataAtual = new Date();
@@ -324,13 +296,15 @@ public class Main {
                             horaPagamento, valorTotalPedido, formaPagamentoPedido, garcomAtendimento);
 
                     novoPedido.realizarPedido();
+                    garcons.get(garcomIndex - 1).setnumPedidosNoMes(garcomAtendimento.getnumPedidosNoMes() + 1);
+                    cozinheiros.get(cozinheiroIndex - 1).setNumPedidosNoMes(cozinheiroEscolhido.getNumPedidosNoMes() + 1);
+
                 }
                 case 0 -> System.out.println("ATÉ MAIS, AMIGÃO :)");
                 default -> System.out.println("OPÇÃO INVÁLIDA! Tente novamente");
             }
 
-            // verificar se o usuário deseja continuar navegando pelo app, mesmo após já ter realizado um pedido
-            Scanner option = new Scanner(System.in);
+            // verificar se o usuário deseja continuar navegando pelo aplicativo, mesmo após já ter realizado algum pedido
             int continuar;
             do {
                 System.out.println("\nDeseja voltar ao MENU?\n(1) -> SIM\n(2) -> NÃO");
@@ -342,5 +316,19 @@ public class Main {
             }
 
         } while(op != 0);
+
+
+        System.out.println("\n<<<<< SALÁRIO DOS GARÇONS >>>>>");
+        for (Garcom g : garcons) {
+            g.verificaGratificacao();
+            System.out.printf("\nSalário do [%s]: R$%.3f\n\n", g.getNome(), g.calcularSalario());
+        }
+
+        System.out.println("\n<<<<< SALÁRIO DOS COZINHEIROS >>>>>");
+        for (Cozinheiro c : cozinheiros) {
+            System.out.printf("Salário do [%s]: R$%.3f\n", c.getNome(), c.calcularSalario());
+        }
+
+        sc.close();
     }
 }
