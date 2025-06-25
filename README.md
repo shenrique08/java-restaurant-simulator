@@ -1,69 +1,92 @@
-# Restaurant Management System
+# 🍽️ Java Restaurant Simulator
 
-A Java-based mini project for managing restaurant operations including customer orders, staff management, and menu items.
+![Language](https://img.shields.io/badge/Language-Java-blue.svg)
+![JDK](https://img.shields.io/badge/JDK-17-orange.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-## Overview
+A command-line restaurant management simulator built with pure Java. This project demonstrates core Object-Oriented Programming (OOP) concepts to simulate the daily operations of a restaurant, including staff management, menu handling, and customer order processing.
 
-This project simulates a restaurant management system with the following features:
-- Customer order processing
-- Staff management (waiters and chefs)
-- Menu item management (drinks, main dishes, desserts)
-- Order tracking and billing
-- Salary calculation for staff based on performance
+---
 
-## Classes Structure
+## ✨ Core Features
 
-### Main Entities
+This project is a practical application of software development principles using only standard Java libraries.
 
-1. **Item** (Abstract Class)
-   - Base class for all menu items
-   - Subclasses: `Bebidas`, `PratoPrincipal`, `Sobremesa`
+- **Object-Oriented Design**  
+  Uses abstraction, inheritance, and polymorphism to model real-world entities:
+  - `Funcionario` (abstract) → extended by:
+    - `Garcom` (Waiter)
+    - `Cozinheiro` (Chef)
+  - `Item` (abstract) → extended by:
+    - `Prato` (Dish)
+      - `PratoPrincipal` (Main Course)
+      - `Sobremesa` (Dessert)
+    - `Bebidas` (Drinks)
 
-2. **Staff**
-   - `Funcionario` (Abstract Class)
-     - `Garcom` (Waiters)
-     - `Cozinheiro` (Chefs)
+- **Salary Calculations**  
+  - **Garçom**: Fixed salary + 10% bonus if monthly order target exceeded.  
+  - **Cozinheiro**: Salary based on the total value of dishes prepared.
 
-3. **Order Management**
-   - `Pedido` (Order processing)
-   - `Cliente` (Customer information)
+- **Interactive CLI**  
+  Console interface allows:
+  - Customer registration  
+  - Menu listing  
+  - Order creation  
+  - Staff assignment
 
-4. **Persistence**
-   - `Persistencia` (Serialization/Deserialization)
+- **Data Persistence with Serialization**  
+  Application state (staff, items) is stored in `.ser` binary files via Java’s built-in serialization.
 
-## Features
+- **Custom Exceptions**  
+  - `salarioNegativoException` prevents creation of staff with invalid salaries.
 
-### Menu Items
-- **Bebidas**: Drinks with size and packaging type
-- **PratoPrincipal**: Main dishes with ingredients and preparation time
-- **Sobremesa**: Desserts with ingredients and weight
+- **Input Validation**  
+  Includes a method to validate CPF (Brazilian ID) format.
 
-### Staff Management
-- **Garcom** (Waiters):
-  - Fixed salary with bonus for exceeding order targets
-  - Day off management
-- **Cozinheiro** (Chefs):
-  - Salary based on prepared dishes
-  - Different values for main dishes and desserts
+---
 
-### Order Processing
-- Customer registration
-- Menu browsing
-- Order creation with:
-  - Item selection
-  - Waiter assignment
-  - Chef assignment
-  - Payment processing
+## 📂 Project Structure
 
-### Data Persistence
-- Serialization of:
-  - Menu items
-  - Staff members
-  - Orders
+```plaintext
+src/
+├── Bebidas.java                  # Drink item
+├── Cliente.java                  # Customer
+├── Cozinheiro.java               # Chef (inherits Funcionario)
+├── Funcionario.java              # Abstract staff base class
+├── Garcom.java                   # Waiter (inherits Funcionario)
+├── Item.java                     # Abstract menu item base
+├── Main.java                     # App entry point (CLI)
+├── Pedido.java                   # Manages orders
+├── Persistencia.java             # Serialization handler
+├── Prato.java                    # Abstract dish class
+├── PratoPrincipal.java           # Main course
+├── Sobremesa.java                # Dessert
+└── salarioNegativoException.java # Custom salary exception
 
-## How to Run
 
-1. Compile all Java files:
-   ```bash
-   javac *.java
-   java Main
+## 💻 Example Usage
+
+Once the application is running, it will prompt you for input in the console.
+
+<<<<< Cadastro de Cliente >>>>>
+Nome: Ash Ketchum
+CPF: 12345678900
+
+<<<<< MENU >>>>>
+(1) LISTAR TODOS OS ITENS
+(2) REALIZAR UM PEDIDO
+(0) SAIR
+ESCOLHA UMA OPÇÃO:
+
+** Placing an Order:**
+The system will guide you to select a waiter, choose items from different categories (drinks, main courses, desserts), and assign a chef to prepare the order.
+
+** Final Report:**
+After exiting the main loop, the application calculates and displays the final salaries for all staff members based on their performance.
+
+<<<<< SALÁRIO DOS GARÇONS >>>>>
+[Maria] não ganhou a gratificação!
+Salário do [Maria]: R$1800,00
+
+<<<<< SALÁRIO DOS COZINHEIROS >>>>>
+Salário do [Paulo Bazooka]: R$15,00
